@@ -1,0 +1,12 @@
+﻿"Metric","Value"
+"Eligible Step 32 TTP cohort",121
+"Common complete-case N",121
+"Progression events",49
+"Censored",72
+"Variables",11
+"Model parameters",11
+"Events per parameter",4.454545454545454
+"Concordance",0.7342801985659129
+"Likelihood-ratio p",2.795788240366767e-4
+"Wald p",0.0015893170556320656
+"Score p",3.0699795722364355e-4

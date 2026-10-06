@@ -1,0 +1,10 @@
+Clinical_Risk,GEP_Risk,n,clinical_total,row_percent,exact_agreement
+Favorable,Favorable,24,24,100,TRUE
+Intermediate,Favorable,22,45,48.888888888888886,FALSE
+Adverse,Favorable,0,52,0,FALSE
+Favorable,Intermediate,0,24,0,FALSE
+Intermediate,Intermediate,23,45,51.111111111111114,TRUE
+Adverse,Intermediate,0,52,0,FALSE
+Favorable,Adverse,0,24,0,FALSE
+Intermediate,Adverse,0,45,0,FALSE
+Adverse,Adverse,52,52,100,TRUE

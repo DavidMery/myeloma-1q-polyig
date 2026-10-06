@@ -1,0 +1,13 @@
+Followup,Comparison,HR (95% CI),p-value,n_reference,n_comparison,events_reference,events_comparison
+4-year,CN2/PolyIG Low vs CN2/PolyIG High,2.33 (0.82–6.65),0.114,46,23,7,7
+4-year,CN>=3/PolyIG ALL vs CN2/PolyIG High,2.98 (1.26–7.04),0.013,46,52,7,20
+4-year,CN>=3/PolyIG ALL vs CN2/PolyIG Low,1.29 (0.55–3.06),0.560,23,52,7,20
+6-year,CN2/PolyIG Low vs CN2/PolyIG High,2.53 (1.00–6.39),0.050,46,23,9,9
+6-year,CN>=3/PolyIG ALL vs CN2/PolyIG High,2.82 (1.30–6.12),0.009,46,52,9,23
+6-year,CN>=3/PolyIG ALL vs CN2/PolyIG Low,1.17 (0.54–2.53),0.694,23,52,9,23
+8-year,CN2/PolyIG Low vs CN2/PolyIG High,2.19 (0.90–5.31),0.084,46,23,11,9
+8-year,CN>=3/PolyIG ALL vs CN2/PolyIG High,2.47 (1.21–5.06),0.013,46,52,11,24
+8-year,CN>=3/PolyIG ALL vs CN2/PolyIG Low,1.20 (0.56–2.59),0.639,23,52,9,24
+Full follow-up,CN2/PolyIG Low vs CN2/PolyIG High,2.40 (1.03–5.64),0.044,46,23,13,10
+Full follow-up,CN>=3/PolyIG ALL vs CN2/PolyIG High,2.47 (1.26–4.85),0.009,46,52,13,26
+Full follow-up,CN>=3/PolyIG ALL vs CN2/PolyIG Low,1.13 (0.54–2.35),0.745,23,52,10,26

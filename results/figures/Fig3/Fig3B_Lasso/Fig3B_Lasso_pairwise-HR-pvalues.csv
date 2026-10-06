@@ -1,0 +1,4 @@
+Comparison,HR (95% CI),p-value,Comparator n/events,Reference n/events
+CN2/PolyIG Low vs CN2/PolyIG High,2.40 (1.03–5.64),0.044,23 / 10,46 / 13
+CN>=3/PolyIG ALL vs CN2/PolyIG High,2.47 (1.26–4.85),0.009,52 / 26,46 / 13
+CN>=3/PolyIG ALL vs CN2/PolyIG Low,1.13 (0.54–2.35),0.745,52 / 26,23 / 10

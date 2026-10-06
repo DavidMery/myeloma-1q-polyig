@@ -1,0 +1,2 @@
+Figure,score_column,cutpoint,cutpoint_source,minimum_group_proportion,n_total,n_low,n_high,HR_high_vs_low,CI_lower_95,CI_upper_95,p_value
+PolyIG,PolyIG_Score,11.670530483870968,optimal_hr,0.15,211,163,48,0.2428213253055508,0.11712505598471404,0.5034123188025563,1.4178275795425212e-4

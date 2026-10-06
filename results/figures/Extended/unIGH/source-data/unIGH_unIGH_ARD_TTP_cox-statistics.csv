@@ -1,0 +1,2 @@
+Figure,Endpoint,Comparison,n,events,HR,CI_lower_95,CI_upper_95,p_value
+unIGH,TTP,Higher vs lower unIGH ARD,211,99,0.2324466460570002,0.10118155226715629,0.5340048857966277,5.854139566737202e-4

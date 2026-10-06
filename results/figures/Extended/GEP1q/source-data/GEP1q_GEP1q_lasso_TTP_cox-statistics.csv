@@ -1,0 +1,2 @@
+Figure,Step,Endpoint,Comparison,n,events,HR,CI_lower_95,CI_upper_95,p_value
+GEP1q,16b,TTP,GEP1qcopy_lasso CN≥3 vs CN2,211,99,2.0348130459278186,1.3663742319628553,3.0302563053535425,4.7181021363909147e-4

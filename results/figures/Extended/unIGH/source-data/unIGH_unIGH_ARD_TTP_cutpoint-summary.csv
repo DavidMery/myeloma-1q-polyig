@@ -1,0 +1,2 @@
+Figure,Endpoint,score_column,cutpoint,cutpoint_source,minimum_group_proportion,n_total,lower_group,higher_group,n_lower,n_higher,HR_higher_vs_lower,CI_lower_95,CI_upper_95,p_value
+unIGH,TTP,IG_ARD,0.31539,optimal_hr,0.15,211,unIGH ≤ 0.32,unIGH > 0.32,171,40,0.2324466460570002,0.10118155226715629,0.5340048857966277,5.854139566737202e-4

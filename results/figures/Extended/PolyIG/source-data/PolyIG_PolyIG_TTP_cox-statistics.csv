@@ -1,0 +1,2 @@
+Figure,Step,Endpoint,Comparison,n,events,HR,CI_lower_95,CI_upper_95,p_value
+PolyIG,17,TTP,PolyIG High vs PolyIG Low,211,99,0.2428213253055508,0.11712505598471404,0.5034123188025563,1.4178275795425212e-4

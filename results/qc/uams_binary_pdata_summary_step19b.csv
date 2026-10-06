@@ -1,0 +1,7 @@
+Column,n_zero,n_one,n_missing
+GEP1q_binary_lasso,206,124,330
+PolyIG_binary,144,186,330
+GEP70_binary,287,43,330
+FISH1q_binary,161,124,375
+IG_ARD_binary,201,84,375
+MGUS_Binary,615,45,0

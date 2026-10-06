@@ -1,0 +1,13 @@
+Composite_Column,Group,n
+GEP_RNAS_Groups_MGUS_Lasso,MGUS,45
+GEP_RNAS_Groups_MGUS_Lasso,GEP70>0.66,43
+GEP_RNAS_Groups_MGUS_Lasso,GEP1q-CN2/PolyIG-high,82
+GEP_RNAS_Groups_MGUS_Lasso,GEP1q-CN2/PolyIG-low,63
+GEP_RNAS_Groups_MGUS_Lasso,GEP1q-CN>=3/PolyIG-high,47
+GEP_RNAS_Groups_MGUS_Lasso,GEP1q-CN>=3/PolyIG-low,50
+Clinical_RNAS_Groups_MGUS,MGUS,45
+Clinical_RNAS_Groups_MGUS,GEP70>0.66,43
+Clinical_RNAS_Groups_MGUS,FISH1q-CN2/IG_ARDhigh,44
+Clinical_RNAS_Groups_MGUS,FISH1q-CN2/IG_ARDlow,100
+Clinical_RNAS_Groups_MGUS,FISH1q-CN>=3/IG_ARDhigh,26
+Clinical_RNAS_Groups_MGUS,FISH1q-CN>=3/IG_ARDlow,72

@@ -1,0 +1,3 @@
+Step,Match_Type,Source_sample_group,Target_sample_group,Eligible_RNAS_sources,Eligible_RNBX_targets,Matched_one_to_one
+21b,NDMM,RNAS_CD138_NDMM,RNBX_WB_NDMM,285,285,285
+21b,MGUS,RNAS_CD138_MGUS,RNBX_WB_MGUS,45,45,45

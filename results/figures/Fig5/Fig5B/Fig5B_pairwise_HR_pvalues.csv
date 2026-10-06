@@ -1,0 +1,4 @@
+﻿"Comparison","HR (95% CI)","p-value","Comparator n/events","Reference n/events"
+"CN2/unIGH Low vs CN2/unIGH High","5.35 (1.56–18.39)","0.008","45 / 20","24 / 3"
+"CN≥3/unIGH ALL vs CN2/unIGH High","5.52 (1.66–18.33)","0.005","52 / 26","24 / 3"
+"CN≥3/unIGH ALL vs CN2/unIGH Low","1.24 (0.69–2.23)","0.463","52 / 26","45 / 20"
