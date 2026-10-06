@@ -2,30 +2,30 @@
 # MASTER SYNTHETIC PIPELINE
 #
 # Purpose:
-#   Run the complete UAMS synthetic-data analysis pipeline from Step 01 through
+#   Run the complete UAMS synthetic-data analysis pipeline from Step 00 through
 #   Step 33 in the required order.
 #
 # This script:
-#   1. Verifies that the working directory is the synthetic-test project root.
+#   1. Verifies that it is being run from the project root.
 #   2. Verifies that the synthetic raw UAMS data are available.
-#   3. Runs all preprocessing, model-training, scoring, survival-analysis,
+#   3. Installs/checks all required R packages.
+#   4. Runs all preprocessing, model-training, scoring, survival-analysis,
 #      clustering, heatmap, clinical-comparison, and Cox-regression scripts.
-#   4. Recreates all processed ExpressionSets, models, QC files, figures,
+#   5. Recreates all processed ExpressionSets, models, QC files, figures,
 #      source-data files, and Table 1 results from the synthetic dataset.
 #
 # Intended use:
 #   This is the master runner for validating that the complete analysis workflow
 #   is reproducible using synthetic data only.
 #
-# Run from the synthetic-test project root with:
+# Run from the project root with:
 #
 #   source("scripts/master-pipeline/run-synthetic-pipeline.R")
 #
 # Important:
-#   - This script must be run from the synthetic-test project root.
-#   - Do not run this script from inside the scripts/ folder.
-#   - Do not run this script from the real-data project root.
-#   - The synthetic-test project root must contain:
+#   - Run this script from the project root.
+#   - Do not run it from inside the scripts/ folder.
+#   - The project root must contain:
 #       data/
 #       scripts/
 #       models/
@@ -37,12 +37,20 @@
 #   - If a step fails, stop the pipeline and resolve that error before
 #     continuing to later steps.
 #   - This pipeline is intended for reproducibility testing and does not use
-#     real patient-level expression data.
+#     real UAMS patient-level data.
+#
+# Compatibility:
+#   This script is designed to run from the project root on:
+#       Windows
+#       macOS
+#       Linux
+#       GitHub-cloned repositories
+#       Code Ocean
 ################################################################################
 
 
 ################################################################################
-# 1. VERIFY SYNTHETIC PROJECT ROOT
+# 1. VERIFY PROJECT ROOT
 ################################################################################
 
 PROJECT_ROOT <- normalizePath(
@@ -51,44 +59,35 @@ PROJECT_ROOT <- normalizePath(
   mustWork = TRUE
 )
 
-if (basename(PROJECT_ROOT) != "synthetic-test") {
-  stop(
-    "\n",
-    "The synthetic pipeline must be run from the synthetic-test project root.\n\n",
-    "Current working directory:\n",
-    PROJECT_ROOT,
-    "\n\n",
-    "Expected project folder:\n",
-    "synthetic-test\n"
-  )
-}
-
-
-################################################################################
-# 2. VERIFY REQUIRED PROJECT DIRECTORIES
-################################################################################
-
-REQUIRED_DIRS <- c(
+REQUIRED_PATHS <- c(
   "data",
+  "data/raw",
+  "data/raw/uams",
   "scripts"
 )
 
-MISSING_DIRS <- REQUIRED_DIRS[
-  !dir.exists(REQUIRED_DIRS)
+MISSING_PATHS <- REQUIRED_PATHS[
+  !file.exists(REQUIRED_PATHS) &
+    !dir.exists(REQUIRED_PATHS)
 ]
 
-if (length(MISSING_DIRS) > 0) {
+if (length(MISSING_PATHS) > 0) {
+  
   stop(
     "\n",
-    "Required project folder(s) are missing:\n",
-    paste(MISSING_DIRS, collapse = ", "),
+    "This pipeline must be run from the project root.\n\n",
+    "Current working directory:\n",
+    PROJECT_ROOT,
+    "\n\n",
+    "Missing required path(s):\n",
+    paste(MISSING_PATHS, collapse = "\n"),
     "\n"
   )
 }
 
 
 ################################################################################
-# 3. VERIFY SYNTHETIC RAW DATA DIRECTORY
+# 2. VERIFY REQUIRED SYNTHETIC RAW DATA FILES
 ################################################################################
 
 SYNTHETIC_DATA_DIR <- file.path(
@@ -98,20 +97,6 @@ SYNTHETIC_DATA_DIR <- file.path(
   "uams"
 )
 
-if (!dir.exists(SYNTHETIC_DATA_DIR)) {
-  stop(
-    "\n",
-    "Synthetic UAMS raw-data folder was not found:\n",
-    SYNTHETIC_DATA_DIR,
-    "\n"
-  )
-}
-
-
-################################################################################
-# 4. VERIFY REQUIRED SYNTHETIC INPUT FILES
-################################################################################
-
 REQUIRED_RAW_FILES <- c(
   "expression-rnas-mgus.csv",
   "expression-rnas-ndmm.csv",
@@ -119,7 +104,8 @@ REQUIRED_RAW_FILES <- c(
   "expression-rnbx-ndmm.csv",
   "features.csv",
   "phenotype.csv",
-  "fish-1q-1p-gep-bl-overlap.csv"
+  "fish-1q-1p-gep-bl-overlap.csv",
+  "fish-1q-cell-percentages.csv"
 )
 
 MISSING_RAW_FILES <- REQUIRED_RAW_FILES[
@@ -132,29 +118,105 @@ MISSING_RAW_FILES <- REQUIRED_RAW_FILES[
 ]
 
 if (length(MISSING_RAW_FILES) > 0) {
+  
   stop(
     "\n",
     "Required synthetic raw-data file(s) are missing:\n",
     paste(MISSING_RAW_FILES, collapse = "\n"),
+    "\n\n",
+    "Expected directory:\n",
+    SYNTHETIC_DATA_DIR,
     "\n"
   )
 }
 
 
 ################################################################################
-# 5. REPORT PROJECT AND INPUT FILES
+# 3. VERIFY CLINICAL INPUT DIRECTORY
+################################################################################
+
+CLINICAL_DIR <- file.path(
+  SYNTHETIC_DATA_DIR,
+  "clinical"
+)
+
+if (!dir.exists(CLINICAL_DIR)) {
+  
+  stop(
+    "\n",
+    "Synthetic clinical-data directory was not found:\n",
+    CLINICAL_DIR,
+    "\n"
+  )
+}
+
+REQUIRED_CLINICAL_FILES <- c(
+  "Clinical_variables.csv",
+  "xlsjs_all_090624_n154395_v68_2026-10-05.csv"
+)
+
+MISSING_CLINICAL_FILES <- REQUIRED_CLINICAL_FILES[
+  !file.exists(
+    file.path(
+      CLINICAL_DIR,
+      REQUIRED_CLINICAL_FILES
+    )
+  )
+]
+
+if (length(MISSING_CLINICAL_FILES) > 0) {
+  
+  stop(
+    "\n",
+    "Required synthetic clinical file(s) are missing:\n",
+    paste(MISSING_CLINICAL_FILES, collapse = "\n"),
+    "\n"
+  )
+}
+
+
+################################################################################
+# 4. CREATE OUTPUT DIRECTORIES IF NEEDED
+################################################################################
+
+OUTPUT_DIRS <- c(
+  file.path("data", "processed"),
+  file.path("data", "processed", "uams"),
+  "models",
+  "results"
+)
+
+for (dir_path in OUTPUT_DIRS) {
+  
+  if (!dir.exists(dir_path)) {
+    
+    dir.create(
+      dir_path,
+      recursive = TRUE,
+      showWarnings = FALSE
+    )
+  }
+}
+
+
+################################################################################
+# 5. REPORT PROJECT INFORMATION
 ################################################################################
 
 cat(
   "\n",
   "============================================================\n",
-  "SYNTHETIC PIPELINE\n",
-  "============================================================\n\n",
+  "MASTER SYNTHETIC PIPELINE\n",
+  "============================================================\n",
+  "\n",
   "Project root:\n",
   PROJECT_ROOT,
   "\n\n",
   "Synthetic raw-data directory:\n",
   SYNTHETIC_DATA_DIR,
+  "\n\n",
+  "Synthetic clinical-data directory:\n",
+  CLINICAL_DIR,
   "\n\n",
   "Synthetic raw-data files:\n"
 )
@@ -167,12 +229,32 @@ print(
 
 cat(
   "\n",
-  "Starting pipeline...\n\n"
+  "Starting pipeline...\n",
+  "\n"
 )
 
 
 ################################################################################
-# 6. RUN PIPELINE
+# 6. STEP 00 — PREPARE R ENVIRONMENT
+################################################################################
+
+cat(
+  "\n",
+  "============================================================\n",
+  "STEP 00 — PREPARE R ENVIRONMENT\n",
+  "============================================================\n"
+)
+
+source(
+  file.path(
+    "scripts",
+    "00_prepare-environment.R"
+  )
+)
+
+
+################################################################################
+# 7. RUN ANALYSIS PIPELINE
 ################################################################################
 
 source("scripts/01_check-missing-values.R")
@@ -211,7 +293,7 @@ source("scripts/33_multivariate-cox.R")
 
 
 ################################################################################
-# 7. COMPLETE
+# 8. COMPLETE
 ################################################################################
 
 cat(
@@ -222,5 +304,27 @@ cat(
   "\n",
   "Project root:\n",
   PROJECT_ROOT,
-  "\n"
+  "\n\n",
+  "Processed data directory:\n",
+  normalizePath(
+    file.path("data", "processed"),
+    winslash = "/",
+    mustWork = FALSE
+  ),
+  "\n\n",
+  "Models directory:\n",
+  normalizePath(
+    "models",
+    winslash = "/",
+    mustWork = FALSE
+  ),
+  "\n\n",
+  "Results directory:\n",
+  normalizePath(
+    "results",
+    winslash = "/",
+    mustWork = FALSE
+  ),
+  "\n",
+  "============================================================\n"
 )
