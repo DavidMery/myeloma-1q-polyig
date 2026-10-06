@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 Rscript scripts/master-pipeline/run-synthetic-pipeline.R
