@@ -88,7 +88,7 @@ if (length(missing_cran) > 0) {
   install.packages(
     missing_cran,
     repos = "https://cloud.r-project.org",
-    dependencies = TRUE
+    dependencies = NA
   )
   
 } else {
