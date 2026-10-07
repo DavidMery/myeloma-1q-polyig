@@ -88,7 +88,7 @@ PIPELINE_SCRIPTS <- c(
   "24_fig2a_Microenvironment_Heatmap.R",
   "25_fig3a-gep1q-polyig-km-tt2.R",
   "26_fig3b-gep1q-polyig-km-tt3plus.R",
-  "27_Fig4A-D_4_6_8yr_Full_followup.R",
+  "27_fig4A-D_4_6_8yr_full_followup.R",
   "28_fig5a-gep1q-polyig-km.R",
   "29_fig5b-fish1q-unigh-ttp-km.R",
   "30_overlay-gep-and-clinical-ttr-curves.R",
