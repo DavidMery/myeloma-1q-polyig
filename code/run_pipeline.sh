@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CAPSULE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-Rscript code/run_pipeline.R
+cd "$CAPSULE_ROOT"
+
+exec Rscript "$SCRIPT_DIR/run_pipeline.R"
