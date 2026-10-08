@@ -1,0 +1,2 @@
+Reference,Comparator,n_reference,events_reference,n_comparator,events_comparator,HR_comparator_vs_reference,CI_lower_95,CI_upper_95,Cox_Wald_p_value,Logrank_chisquare,Logrank_df,Logrank_p_value,Cox_concordance,PH_global_p_value
+TT2_NoThal,TT2_Thal,14,5,13,6,1.2009349266942704,0.3621549788654872,3.982396438873358,0.7646639082306664,0.08985395763726006,1,0.7643629003763956,0.471830985915493,0.14095621188776336

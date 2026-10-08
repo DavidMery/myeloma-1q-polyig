@@ -1,0 +1,2 @@
+Step,Figure,Endpoint,n_total,events_total,reference_protocol,comparator_protocol,gep1q_column,required_gep1q_class,polyig_column,polyig_cutpoint,required_polyig_group,gep70_column,gep70_threshold,event_value_one_is_event,time_column,event_column
+25b,Fig3A_TT2_Thal_vs_NoThal_1q2_PolyIGHigh,TTP,27,11,TT2_NoThal,TT2_Thal,GEP1qcopy_lasso,1q2,PolyIG_Score,11,High,GEP70,0.66,TRUE,YearsTTP,CensTTP
